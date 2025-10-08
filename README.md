@@ -29,22 +29,27 @@ The system follows a microservices architecture pattern with event-driven commun
 -H2 DB installed and running
 
 ## Setup Instructions
+
 1. Start Kafka and Zookeeper
+   
 # Start Zookeeper
 bin/windows/server-start.sh config/zookeeper.properties
 # Start Kafka Server
 bin/windows/kafka-server-start.sh config/server.properties
 
 2. Create Kafka Topics
+   
 # Create product events topic
 bin/windows/kafka-topics.sh --create --topic product-events --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
 # Create inventory events topic
 bin/kafka-topics.sh --create --topic inventory-events --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
 
 3. Configure Services
+   
 Update application configuration files with your Kafka broker details: properties kafka.bootstrap.servers=localhost:9092 kafka.group.id=retail-consumer-group
 
 4. Run Services
+   
 # Start Product Service
 cd product-service
 [mvn spring-boot:run / npm start / python app.py]
@@ -55,31 +60,31 @@ cd inventory-service
 
 ## API Endpoints
 Order Service
--POST /api/orders/create - Create new product
--GET /api/orders/all - Get all products
+POST /api/orders/create - Create new product
+GET /api/orders/all - Get all products
 
 Inventory Service
--GET /api/inventory/items/{productId} - Get inventory for product
--POST /api/inventory/items - Add inventory 
--GET /api/inventory/items/all - Get all products
+GET /api/inventory/items/{productId} - Get inventory for product
+POST /api/inventory/items - Add inventory 
+GET /api/inventory/items/all - Get all products
 
 ## Event Flow
--Order Service publishes events to product-events topic
--Inventory Service consumes events from product-events topic
--Inventory Service automatically syncs stock data based on product changes
--Services remain loosely coupled through Kafka messaging
+Order Service publishes events to product-events topic
+Inventory Service consumes events from product-events topic
+Inventory Service automatically syncs stock data based on product changes
+Services remain loosely coupled through Kafka messaging
 
 ## Future Enhancements
--Add authentication and authorization
--Implement API Gateway
--Add service discovery (Eureka/Consul)
--Implement distributed tracing
--Add monitoring and logging (ELK Stack)
--Containerize with Docker
--Orchestrate with Kubernetes
+Add authentication and authorization
+Implement API Gateway
+Add service discovery (Eureka/Consul)
+Implement distributed tracing
+Add monitoring and logging (ELK Stack)
+Containerize with Docker
+Orchestrate with Kubernetes
 
 ## Contributors
--Mallapragada Naga Sai Srinivasa Nikhil
+Mallapragada Naga Sai Srinivasa Nikhil
 
 ## License
 This project is created for learning purposes.
