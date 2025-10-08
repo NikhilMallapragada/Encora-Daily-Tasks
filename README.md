@@ -18,15 +18,15 @@ The system follows a microservices architecture pattern with event-driven commun
 **Scalable Architecture**: Independent service scaling capability
 
 ## Technology Stack
--Message Broker: Apache Kafka
--Backend Framework: [Spring Boot/Apache Kafka]
--Database: [H2 DB]
--Build Tool: [Maven/Spring Boot Starter]
+Message Broker: Apache Kafka
+Backend Framework: [Spring Boot/Apache Kafka]
+Database: [H2 DB]
+Build Tool: [Maven/Spring Boot Starter]
 
 ## Prerequisites
--Java 21+
--Apache Kafka 2.8+
--H2 DB installed and running
+Java 21+
+Apache Kafka 2.8+
+H2 DB installed and running
 
 ## Setup Instructions
 
