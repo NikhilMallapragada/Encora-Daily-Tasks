@@ -53,6 +53,7 @@ Client → Employee Service → Order Service → Employee Service → Response
 - Provides REST endpoint to retrieve orders by ID  
 
 **Package Structure:**
+
 com.ordertest.Emp_Order_Service
 │
 ├── Model/
@@ -96,55 +97,47 @@ com.employeetest.Emp_Employee_Service
 ##  Setup Instructions  
 
 ###  Run **Order Service**
-```bash
+
 cd Emp_Order_Service
 mvn spring-boot:run
 Runs on port 8081
 
-##  Communication flow 
+##  Communication Flow
 
-The client sends a request to Employee Service (/employee/getOrder/{id})
+1. The **client** sends a request to **Employee Service** → `/employee/getOrder/{id}`
+2. **Employee Service** calls **Order Service** → `/Order/{id}` using **RestTemplate**
+3. **Order Service** returns the **order data**
+4. **Employee Service** adds a **success message** and returns a **combined response**
 
-Employee Service calls Order Service (/Order/{id}) using RestTemplate
+---
 
-Order Service returns order data
+##  Key Learnings
 
-Employee Service adds a success message and returns a combined response
+- Understand **synchronous inter-service communication**
+- Use **RestTemplate** for calling other microservices
+- Learn **microservice separation** and **modular design**
+- Observe how one service depends on another **in real time**
 
-## Key Learnings
+---
 
-Understand synchronous inter-service communication
+##  Future Enhancements
 
-Use RestTemplate for calling other microservices
+-  Integrate **Swagger UI** for API documentation  
+-  Replace **RestTemplate** with **Feign Client** for cleaner code  
+-  Add **Service Discovery (Eureka)** for dynamic service lookup  
+-  Add **centralized logging and monitoring**  
+-  Implement **Asynchronous Communication** with **Kafka** or **RabbitMQ**
 
-Learn microservice separation and modular design
+---
 
-Observe how one service depends on another in real time
+##  Contributors
 
-## Future Enhancements
+- **Mallapragada Naga Sai Srinivasa Nikhil**
 
- Integrate Swagger UI for API documentation
+---
 
- Replace RestTemplate with Feign Client for cleaner code
+## 📬 Contact
 
- Add Service Discovery (Eureka) for dynamic service lookup
-
- Add centralized logging and monitoring
-
- Implement Asynchronous Communication with Kafka or RabbitMQ
-
-
-## Contributors
-
-Mallapragada Naga Sai Srinivasa Nikhil
-
-## License
-
-This project is developed for learning and demonstration purposes.
-Feel free to fork, modify, and explore.
-
-## Contact
-nikhil.m@encora.com
-
- Date Created: October 10, 2025
- Last Updated: October 10, 2025
+ **Email:** nikhil.m@encora.com  
+ **Date Created:** October 10, 2025  
+ **Last Updated:** October 10, 2025
