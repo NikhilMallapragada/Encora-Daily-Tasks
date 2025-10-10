@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: linear-gradient(145deg, #ffffff, #e0e0e0);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h2 { color: #333; margin-bottom: 30px; }
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #0056b3, #00a3cc);
+            transform: scale(1.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .status-completed { color: green; font-weight: bold; }
+        .status-inprocess { color: orange; font-weight: bold; }
+        .status-notstarted { color: red; font-weight: bold; }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #ff4d4d, #ff9999);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <button onclick="showUsers()">Manage Users</button>
+        <button onclick="showLogs()">Check Logs</button>
+        <button onclick="checkServers()">Check Servers</button>
+
+        <div id="displayArea"></div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "/logout"; // Spring Security logout
+        }
+
+        function showUsers() {
+            fetch('/admin/users')
+                .then(res => res.json())
+                .then(data => {
+                    let html = '<h3>Users List</h3><table><tr><th>ID</th><th>Username</th><th>Email</th></tr>';
+                    data.forEach(user => {
+                        html += `<tr><td>${user.id}</td><td>${user.username}</td><td>${user.email}</td></tr>`;
+                    });
+                    html += '</table>';
+                    document.getElementById('displayArea').innerHTML = html;
+                })
+                .catch(err => alert('Error fetching users'));
+        }
+
+        function showLogs() {
+            fetch('/admin/tasks') // get tasks from backend
+                .then(res => res.json())
+                .then(tasks => {
+                    let html = '<h3>Developer Tasks Status</h3>';
+                    html += '<table><tr><th>Task</th><th>Deadline</th><th>Status</th></tr>';
+                    tasks.forEach(task => {
+                        let symbol = getStatusSymbol(task.status);
+                        html += `<tr>
+                                    <td>${symbol} ${task.taskName}</td>
+                                    <td>${task.deadline}</td>
+                                    <td>${task.status}</td>
+                                 </tr>`;
+                    });
+                    html += '</table>';
+                    document.getElementById('displayArea').innerHTML = html;
+                })
+                .catch(err => alert('Error fetching tasks'));
+        }
+
+        function getStatusSymbol(status) {
+            switch(status) {
+                case 'Completed': return '<span class="status-completed">&#10004;</span>'; // green tick
+                case 'In Process': return '<span class="status-inprocess">&#9888;</span>'; // orange warning
+                case 'Not Started': return '<span class="status-notstarted">&#10008;</span>'; // red cross
+                default: return '';
+            }
+        }
+
+        function checkServers() {
+            fetch('/admin/servers')
+                .then(res => res.json())
+                .then(data => {
+                    let html = '<h3>Server Status</h3><ul>';
+                    data.forEach(server => {
+                        let statusClass = server.status === 'OK' ? 'status-completed' : 'status-notstarted';
+                        html += `<li>${server.name}: <span class="${statusClass}">${server.status}</span></li>`;
+                    });
+                    html += '</ul>';
+                    document.getElementById('displayArea').innerHTML = html;
+                })
+                .catch(err => alert('Error fetching server status'));
+        }
+    </script>
+</body>
+</html>

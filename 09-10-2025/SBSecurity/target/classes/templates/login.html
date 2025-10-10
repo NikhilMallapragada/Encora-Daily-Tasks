@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Secure Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>🔐 Secure Login</h2>
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" placeholder="Enter Username" required />
+        <input type="password" name="password" placeholder="Enter Password" required />
+        <button type="submit">Login</button>
+    </form>
+    <p th:if="${param.error}" class="error">Invalid username or password!</p>
+    <p th:if="${param.logout}" class="success">You have been logged out.</p>
+  </div>
+</body>
+</html>

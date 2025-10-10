@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Workspace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .dashboard-container {
+      background: linear-gradient(145deg, #ffffff, #e0e0e0);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+    }
+    h1 { color: #333; margin-bottom: 20px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    select {
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .symbol {
+      margin-right: 8px;
+      font-weight: bold;
+    }
+    .completed { color: green; }
+    .in-process { color: orange; }
+    .not-started { color: red; }
+    .btn.logout-btn {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ff4d4d, #ff9999);
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Hello Developer!</h1>
+    <p>Here are your tasks, deadlines, and status:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Deadline</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="taskTable">
+        <!-- Tasks will be dynamically inserted here -->
+      </tbody>
+    </table>
+
+    <button class="btn logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function logout() {
+      window.location.href = "/logout";
+    }
+
+    // Developer tasks
+    const developerTasks = [
+      { task: "Implement login API", deadline: "2025-10-12", status: "Not Started" },
+      { task: "Fix dashboard UI", deadline: "2025-10-14", status: "In Process" },
+      { task: "Write unit tests", deadline: "2025-10-16", status: "Completed" }
+    ];
+
+    const tableBody = document.getElementById('taskTable');
+
+    // Function to get symbol HTML based on status
+    function getSymbol(status) {
+      switch(status) {
+        case 'Completed': return '<span class="symbol completed">&#10004;</span>'; // green check
+        case 'In Process': return '<span class="symbol in-process">&#9888;</span>'; // orange warning
+        case 'Not Started': return '<span class="symbol not-started">&#10008;</span>'; // red cross
+        default: return '';
+      }
+    }
+
+    function renderTasks() {
+      tableBody.innerHTML = '';
+      developerTasks.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${getSymbol(item.status)}${item.task}</td>
+          <td>${item.deadline}</td>
+          <td>
+            <select onchange="updateStatus(${index}, this.value)">
+              <option value="Not Started" ${item.status === 'Not Started' ? 'selected' : ''}>Not Started</option>
+              <option value="In Process" ${item.status === 'In Process' ? 'selected' : ''}>In Process</option>
+              <option value="Completed" ${item.status === 'Completed' ? 'selected' : ''}>Completed</option>
+            </select>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function updateStatus(index, newStatus) {
+      developerTasks[index].status = newStatus;
+      renderTasks(); // re-render table to update symbol
+    }
+
+    // Initial render
+    renderTasks();
+  </script>
+</body>
+</html>
