@@ -136,8 +136,10 @@ Runs on port 8081
 
 ---
 
-## 📬 Contact
+##  Contact
 
  **Email:** nikhil.m@encora.com  
+ 
+ ---
  **Date Created:** October 10, 2025  
  **Last Updated:** October 10, 2025
