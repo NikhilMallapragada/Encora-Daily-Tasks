@@ -11,6 +11,7 @@
 	<groupId>com.parking</groupId>
 	<artifactId>SBSecurity</artifactId>
 	<version>1.0</version>
+	<packaging>jar</packaging> 
 	<name>SBSecurity</name>
 	<description>web project for spring  boot with api </description>
 	<url/>
