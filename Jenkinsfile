@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK11'
+        jdk 'JDK21'
         maven 'Maven3'
     }
 
@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'mvn clean package -DskipTests'
+                    bat 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
         stage('Package') {
             steps {
                 script {
-                    sh 'mvn package'
+                    bat 'mvn package'
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'java -jar target/${JAR_NAME} &'
+                    bat 'java -jar target/${JAR_NAME} &'
                 }
             }
         }
