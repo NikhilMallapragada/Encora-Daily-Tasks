@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registered Successfully</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="registration-container">
+    <h2>Registration Successful 🎉</h2>
+    <p>Your registration has been completed successfully.</p>
+
+    <div class="details">
+      <h3>Entered Details:</h3>
+      <p><strong>Name:</strong> <span id="name"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Phone:</strong> <span id="phone"></span></p>
+      <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+      <p><strong>Gender:</strong> <span id="gender"></span></p>
+      <p><strong>Course:</strong> <span id="course"></span></p>
+    </div>
+
+    <a href="index.html" class="submit-btn" style="display:inline-block; text-decoration:none; text-align:center;">Register Another Student</a>
+  </div>
+
+  <script>
+    // Retrieve data from localStorage
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
+    if (userData) {
+      document.getElementById("name").textContent = userData.name;
+      document.getElementById("email").textContent = userData.email;
+      document.getElementById("phone").textContent = userData.phone;
+      document.getElementById("dob").textContent = userData.dob;
+      document.getElementById("gender").textContent = userData.gender;
+      document.getElementById("course").textContent = userData.course;
+    }
+  </script>
+</body>
+</html>
