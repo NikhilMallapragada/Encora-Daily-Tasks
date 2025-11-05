@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - ShopEase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">ShopEase</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="index.html#offers">Offers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="order-success">
+    <div class="success-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Success Icon">
+      <h2>Order Placed Successfully </h2>
+      <p>Your order has been confirmed and will be delivered by <span id="delivery-date"></span>.</p>
+      <p>Thank you for shopping with <strong>ShopEase</strong>!</p>
+      <button onclick="window.location.href='index.html'">Continue Shopping</button>
+    </div>
+  </section>
+
+  <script>
+    const today = new Date();
+    const deliveryDate = new Date(today);
+    deliveryDate.setDate(today.getDate() + 5); // delivery after 5 days
+    document.getElementById("delivery-date").innerText =
+      deliveryDate.toDateString();
+  </script>
+
+</body>
+</html>
