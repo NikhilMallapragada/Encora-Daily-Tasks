@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nikhil | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">My Portfolio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- 🌙 Dark Mode Toggle Button -->
+      <button id="theme-toggle" class="btn btn-outline-info ms-3">
+        <i class="bi bi-moon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section id="home" class="hero d-flex align-items-center text-center text-white">
+    <div class="container">
+      <h1>Hello, I'm <span class="text-info">Nikhil</span></h1>
+      <h3>I’m a <span id="typing"></span></h3>
+      <a href="#projects" class="btn btn-primary mt-3">View My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="mb-4">About Me</h2>
+      <a href="https://www.linkedin.com/in/mallapragada-nikhil/" target="_blank">
+        <img src="profile.jpg" alt="Nikhil LinkedIn Photo" class="profile-img mb-3">
+      </a>
+      <p class="lead">Hello! I’m Nikhil, a passionate web developer who loves building responsive, user-friendly websites using HTML, CSS, Bootstrap, and JavaScript. I enjoy turning creative ideas into functional digital experiences.</p>
+      <a href="resume.pdf" class="btn btn-outline-primary mt-3" download>Download Resume</a>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-light py-5">
+    <div class="container text-center" data-aos="fade-up">
+      <h2 class="mb-5">Skills</h2>
+      <div class="row gy-4">
+        <div class="col-md-3"><i class="fab fa-java fa-3x text-warning"></i><h5>Java</h5></div>
+        <div class="col-md-3"><i class="fab fa-python fa-3x text-primary"></i><h5>Python</h5></div>
+        <div class="col-md-3"><i class="fab fa-aws fa-3x text-warning"></i><h5>AWS</h5></div>
+        <div class="col-md-3"><i class="fab fa-html5 fa-3x text-danger"></i><h5>HTML</h5></div>
+        <div class="col-md-3"><i class="fab fa-css3-alt fa-3x text-primary"></i><h5>CSS</h5></div>
+        <div class="col-md-3"><i class="fab fa-bootstrap fa-3x text-purple"></i><h5>Bootstrap</h5></div>
+        <div class="col-md-3"><i class="fab fa-js fa-3x text-warning"></i><h5>JavaScript</h5></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5">My Projects</h2>
+      <div class="row">
+
+        <div class="col-md-4 mb-4">
+          <a href="https://github.com/NikhilMallapragada/Vehicle-parking-management-system" target="_blank" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm project-card">
+              <img src="vehicleparking.jpg" class="card-img-top" alt="Project 1">
+              <div class="card-body">
+                <h5 class="card-title">Vehicle Parking Management System</h5>
+                <p class="card-text">Manage vehicle entries, exits, and calculate parking charges efficiently.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <a href="https://github.com/NikhilMallapragada/ATM-Web-app" target="_blank" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm project-card">
+              <img src="atmwebapp.jpg" class="card-img-top" alt="Project 2">
+              <div class="card-body">
+                <h5 class="card-title">ATM Web Application</h5>
+                <p class="card-text">Simulates ATM functions like deposit, withdraw, and balance check using JS.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <a href="https://github.com/your-username/portfolio" target="_blank" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm project-card">
+              <img src="portifolio.jpg" class="card-img-top" alt="Project 3">
+              <div class="card-body">
+                <h5 class="card-title">Personal Portfolio Website</h5>
+                <p class="card-text">Responsive personal website built with HTML, CSS, Bootstrap, and JS.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Me</h2>
+    <form id="contact-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="from_name" class="form-control" placeholder="Your Name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="from_email" class="form-control" placeholder="Your Email" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" name="message" rows="5" class="form-control" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-info w-100">Send Message</button>
+    </form>
+
+    <!-- Success / Error Alert -->
+    <div id="status-message" class="text-center mt-3"></div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>Connect with me:</p>
+    <a href="https://github.com/NikhilMallapragada" target="_blank" class="text-white mx-2"><i class="fab fa-github fa-lg"></i></a>
+    <a href="https://www.linkedin.com/in/mallapragada-nikhil/" target="_blank" class="text-white mx-2"><i class="fab fa-linkedin fa-lg"></i></a>
+    <p class="mt-2 mb-0">&copy; 2025 Nikhil | All Rights Reserved</p>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
